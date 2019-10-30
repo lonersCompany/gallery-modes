@@ -8,6 +8,7 @@ fields:
 - type: image_gallery
   name: images
   label: images
+  description: project images
 - type: text
   name: basic-mode
   label: basic-mode
