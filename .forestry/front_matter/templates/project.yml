@@ -16,4 +16,5 @@ fields:
   name: permalink
   label: permalink
 pages:
+- project.md
 - index.markdown
