@@ -7,7 +7,7 @@ sections:
 - type: jekyll-pages
   label: Pages
   create: all
-  new_doc_ext: ".md"
+  new_doc_ext: md
   templates:
   - project
 upload_dir: anymade
