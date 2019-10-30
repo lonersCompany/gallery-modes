@@ -1,0 +1,42 @@
+@import "tailwindcss/base";
+
+@import "tailwindcss/components";
+
+@import "tailwindcss/utilities";
+
+@import "swiper/swiper.scss";
+
+.swiper-container {
+  height: 80vh;
+  margin: 10vh 0;
+}
+
+.swiper-container[mode="scroll"] {
+  height: auto;
+
+  .swiper-wrapper {
+    flex-direction: column;
+  }
+
+  .swiper-slide {
+    height: 80vh;
+    margin-bottom: 2em;
+  }
+}
+
+.swiper-container[mode="scroll"],
+.swiper-container[mode="strobo"] {
+  .swiper-next,
+  .swiper-prev {
+    display: none;
+  }
+}
+
+.swiper-next {
+  right: 0;
+  cursor: e-resize;
+}
+
+.swiper-prev {
+  cursor: w-resize;
+}
