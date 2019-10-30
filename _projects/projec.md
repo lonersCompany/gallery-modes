@@ -1,5 +1,0 @@
----
-title:
-basic-mode:
-images:
----
