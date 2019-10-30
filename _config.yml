@@ -21,7 +21,7 @@
 title: Gallery modes
 email: simon@loners.company
 description: >- # this means to ignore newlines until "baseurl:"
-  Simple presentation tool to dispaly project images in different modes
+  Simple presentation tool for dispaly project images in different modes
 baseurl: "/gellery-modes" # the subpath of your site, e.g. /blog
 publicPath: "/dist/"
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
