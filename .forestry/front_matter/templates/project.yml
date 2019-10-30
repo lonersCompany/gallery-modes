@@ -1,0 +1,16 @@
+---
+label: project
+hide_body: true
+fields:
+- type: text
+  name: permalink
+  label: permalink
+- type: text
+  name: title
+  label: title
+- type: text
+  name: basic-mode
+  label: basic-mode
+- type: image_gallery
+  name: images
+  label: images
