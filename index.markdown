@@ -3,6 +3,14 @@ permalink: "/"
 title: Anymade
 basic-mode: slider
 images:
+- "/v1572458361/anymade/intro-16_j6gn8e.jpg"
+- "/v1572458362/anymade/intro-15_jocoyx.jpg"
+- "/v1572458363/anymade/intro-14_gmtjb1.jpg"
+- "/v1572458361/anymade/intro-13_t1cmsf.jpg"
+- "/v1572458362/anymade/intro-12_uhyv96.jpg"
+- "/v1572458363/anymade/intro-11_yclnuu.jpg"
+- "/v1572458363/anymade/intro-10_mz3z5p.jpg"
+- "/v1572458363/anymade/intro-1_cd0njj.jpg"
 - "/anymade/intro-1.jpg"
 - "/anymade/intro-36.jpg"
 - "/anymade/intro-41.jpg"
