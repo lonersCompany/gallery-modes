@@ -80,20 +80,24 @@ const linkedList = (state, index) => {
         }
       }
     };
-  }
-
-  if (mode === "slide" || mode === "strobo") {
+  } else {
     if (state.scrolldelay) {
       clearTimeout(state.scrolldelay);
       state.scrolldelay = null;
       window.scrollTo(0, 1);
     }
 
-    state.swiper = new Swiper(state.mainEl, swiperParameters);
-  }
+    if (!state.swiper) {
+      state.swiper = new Swiper(state.mainEl, swiperParameters);
+    }
 
-  if (mode === "slide") {
-    state.swiper.autoplay.stop();
+    if (mode === "slide") {
+      state.swiper.autoplay.stop();
+    }
+
+    if (mode === "strobo") {
+      state.swiper.autoplay.start();
+    }
   }
 
   state.currentIndex = index;
