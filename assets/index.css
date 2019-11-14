@@ -6,6 +6,18 @@
 
 @import "swiper/swiper.scss";
 
+/* CONTROLS */
+
+.range + label {
+  display: none;
+}
+
+.range.active + label {
+  display: inline;
+}
+
+/* SWIPER */
+
 .swiper-container {
   height: 80vh;
   margin: 10vh 0;

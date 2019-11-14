@@ -1,47 +1,102 @@
-import switchMode from "./js/switchMode.js";
-import { startScroll, stopScroll } from "./js/autoscroll.js";
+import Swiper from "swiper";
+import { swiperParameters } from "./js/swiperParams";
+import { startScroll } from "./js/autoscroll.js";
 
 window.scrolldelay = false;
 window.isScrolling = false;
 
-window.onkeydown = e => {
-  if (e.key == "s") {
-    if (window.isScrolling) {
-      stopScroll();
-    } else {
-      console.log(window);
-      startScroll();
+const linkedList = (state, index) => {
+  let { btns, currentIndex } = state;
+
+  const prevModeBtn = btns[currentIndex];
+  const currentModeBtn = btns[index];
+  const mode = currentModeBtn.getAttribute("mode");
+
+  // SWITCH MODE
+  if (prevModeBtn) {
+    prevModeBtn.classList.remove("active");
+  }
+  currentModeBtn.classList.add("active");
+
+  state.mainEl.setAttribute("mode", mode);
+
+  switch (mode) {
+    case "strobo": {
+      if (state.swiper) {
+        state.swiper.autoplay.start();
+      } else {
+        state.swiper = new Swiper(state.mainEl, swiperParameters);
+      }
+      break;
+    }
+    case "slide": {
+      if (state.swiper) {
+        state.swiper.autoplay.stop();
+      } else {
+        state.swiper = new Swiper(state.mainEl, swiperParameters);
+        state.swiper.autoplay.stop();
+      }
+      break;
+    }
+    case "scroll": {
+      if (state.swiper) {
+        state.swiper.destroy(true, true);
+        state.swiper = false;
+      }
+
+      startScroll(state);
+
+      window.onkeydown = e => {
+        if (e.key == "s") {
+          if (state.scrolldelay) {
+            clearTimeout(state.scrolldelay);
+            state.scrolldelay = null;
+          } else {
+            console.log("run egen");
+            startScroll(state);
+          }
+        }
+      };
+      break;
     }
   }
+
+  state.currentIndex = index;
+  state.mode = mode;
 };
 
-const swiperContainer = document.querySelector(".swiper-container");
-const modeAttribute = swiperContainer.getAttribute("mode");
-const defaultMode = modeAttribute ? modeAttribute : "slider";
+const SwitcherApp = mainEl => {
+  const btns = Array.from(mainEl.getElementsByClassName("btn-mode"));
 
-switchMode({
-  mode: defaultMode,
-  swiperContainer
-});
+  let state = {
+    currentIndex: 0,
+    mode: "Scroll",
+    swiper: null,
+    scrolldelay: null,
+    scrollSpeed: 30,
+    btns,
+    mainEl
+  };
 
-console.log(defaultMode);
+  linkedList(state, 2);
 
-// TODO: ADD BABEL
-const btnElements = Array.from(document.getElementsByClassName("btn-mode"));
-
-if (btnElements.length > 0) {
-  btnElements.forEach(btn =>
-    btn.addEventListener("click", () => {
-      const mode = btn.getAttribute("mode");
-      switchMode({
-        mode,
-        swiperContainer
-      });
-    })
+  btns.forEach((item, index) =>
+    item.addEventListener("click", () => linkedList(state, index))
   );
-} else {
-  console.err("no button elements");
-}
 
-// projects.forEach(buildProject);
-// projects.forEach((obj, index) => buildHeader(obj.name, index));
+  const speedControler = document.getElementById("scroll-speed");
+
+  speedControler.addEventListener("input", e => {
+    const speedValue = Number(e.target.value);
+    const revecerceDrag = 51 - speedValue;
+    state.scrollSpeed = revecerceDrag;
+    console.log(state.scrollSpeed);
+
+    if (!state.scrolldelay) {
+      startScroll(state);
+    }
+  });
+};
+
+const SwitcherEl = document.querySelector(".swiper-container");
+if (SwitcherEl) SwitcherApp(SwitcherEl);
