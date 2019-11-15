@@ -13,26 +13,6 @@ body {
   font-size: 1.2em;
 }
 
-input[type="range"],
-.range {
-  -webkit-appearance: slider-horizontal;
-  color: rgb(144, 144, 144);
-  cursor: default;
-  padding: initial;
-  border: initial;
-  margin: 0;
-  font-weight: inherit;
-  line-height: 1em;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  // border: 0;
-  background-color: #100049;
-  filter: blur(3px);
-  cursor: ew-resize;
-  outline: none;
-}
-
 .btn-mode + .range {
   display: none;
 }
@@ -77,3 +57,24 @@ input[type="range"],
 .swiper-prev {
   cursor: w-resize;
 }
+
+// input[type="range"] {
+//   border-radius: 2rem;
+//   -webkit-appearance: none;
+// }
+
+// input[type="range"]::-webkit-slider-thumb {
+//   background: #a0aec0;
+// }
+
+// input[type="range"]:focus {
+//   outline: none;
+// }
+
+// input[type="range"]::-webkit-slider-runnable-track {
+//   background: #24272b;
+// }
+
+// input[type="range"]:focus::-webkit-slider-runnable-track {
+//   background: #24272b;
+// }
