@@ -58,23 +58,140 @@ body {
   cursor: w-resize;
 }
 
-// input[type="range"] {
-//   border-radius: 2rem;
-//   -webkit-appearance: none;
-// }
+// from https://css-tricks.com/styling-cross-browser-compatible-range-inputs-css/
 
-// input[type="range"]::-webkit-slider-thumb {
-//   background: #a0aec0;
-// }
+// * * * COLORS * * *
 
-// input[type="range"]:focus {
-//   outline: none;
-// }
+$font-size: 16px; // <--- change the font size to change the size
 
-// input[type="range"]::-webkit-slider-runnable-track {
-//   background: #24272b;
-// }
+// light version
 
-// input[type="range"]:focus::-webkit-slider-runnable-track {
-//   background: #24272b;
-// }
+$color__fill: #a0aec0;
+$color__default: #a0aec0;
+$color__hover: rgba(17, 0, 168, 1);
+$color__active: rgba(17, 0, 168, 1);
+
+input[type="range"] {
+  box-sizing: border-box;
+  font-size: $font-size;
+  line-height: 1;
+  height: 2em;
+  background-color: transparent;
+  cursor: pointer;
+
+  // * * * RESET * * *
+
+  -webkit-appearance: none;
+  //width: 100%;
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+  }
+  &:focus {
+    outline: none;
+  }
+  &::-ms-track {
+    width: 100%;
+    cursor: pointer;
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+  }
+
+  //   // * * * TRUMP * * *
+
+  @mixin mx-trange-trump() {
+    width: 1em;
+    height: 1em;
+    margin-top: 0.5em;
+    background-color: $color__fill;
+    border-radius: 1em;
+    border: 2px solid transparent;
+    cursor: pointer;
+  }
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+
+    @include mx-trange-trump();
+  }
+
+  &::-moz-range-thumb {
+    @include mx-trange-trump();
+  }
+
+  &::-ms-thumb {
+    @include mx-trange-trump();
+  }
+
+  &:hover {
+    &::-webkit-slider-thumb {
+      border-color: $color__hover;
+      //background-color: $color__hover;
+    }
+    &::-moz-range-thumb {
+      border-color: $color__hover;
+      //background-color: $color__hover;
+    }
+    &::-ms-thumb {
+      border-color: $color__hover;
+      //background-color: $color__hover;
+    }
+  }
+
+  //&:focus,
+  &:active {
+    &::-webkit-slider-thumb {
+      border-color: $color__active;
+    }
+    &::-moz-range-thumb {
+      border-color: $color__active;
+    }
+    &::-ms-thumb {
+      border-color: $color__active;
+    }
+  }
+
+  // * * * TRACK * * *
+
+  // .mx-range-track() {
+  //   width: 100%;
+  //   cursor: pointer;
+  //   height: 1em;
+  //   border-bottom: 2px solid $color__default;
+  //   background-color: transparent;
+  // }
+
+  &::-webkit-slider-runnable-track {
+    width: 100%;
+    cursor: pointer;
+    height: 1em;
+    border-bottom: 2px solid $color__default;
+    background-color: transparent;
+  }
+
+  &:focus::-webkit-slider-runnable-track {
+  }
+
+  &::-moz-range-track {
+    width: 100%;
+    cursor: pointer;
+    height: 1em;
+    border-bottom: 2px solid $color__default;
+    background-color: transparent;
+  }
+
+  &::-ms-track {
+    background: transparent;
+    border-color: transparent;
+    color: transparent;
+  }
+  &::-ms-fill-lower {
+  }
+  &:focus::-ms-fill-lower {
+  }
+  &::-ms-fill-upper {
+  }
+  &:focus::-ms-fill-upper {
+  }
+}
