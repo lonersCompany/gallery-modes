@@ -20,47 +20,6 @@ const linkedList = (state, index) => {
 
   state.mainEl.setAttribute("mode", mode);
 
-  // switch (mode) {
-  //   case "strobo": {
-  //     if (state.swiper) {
-  //       state.swiper.autoplay.start();
-  //     } else {
-  //       state.swiper = new Swiper(state.mainEl, swiperParameters);
-  //     }
-  //     break;
-  //   }
-  //   case "slide": {
-  //     if (state.swiper) {
-  //       state.swiper.autoplay.stop();
-  //     } else {
-  //       state.swiper = new Swiper(state.mainEl, swiperParameters);
-  //       state.swiper.autoplay.stop();
-  //     }
-  //     break;
-  //   }
-  //   case "scroll": {
-  //     if (state.swiper) {
-  //       state.swiper.destroy(true, true);
-  //       state.swiper = false;
-  //     }
-
-  //     startScroll(state);
-
-  //     window.onkeydown = e => {
-  //       if (e.key == "s") {
-  //         if (state.scrolldelay) {
-  //           clearTimeout(state.scrolldelay);
-  //           state.scrolldelay = null;
-  //         } else {
-  //           console.log("run egen");
-  //           startScroll(state);
-  //         }
-  //       }
-  //     };
-  //     break;
-  //   }
-  // }
-
   if (mode === "scroll") {
     if (state.swiper) {
       state.swiper.destroy(true, true);
