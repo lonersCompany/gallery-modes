@@ -1,4 +1,4 @@
-<header class="site-header fixed top-0 m-4 z-10" role="banner">
+<header class="site-header fixed top-0 my-2 mx-4 z-10" role="banner">
   <div class="wrapper">
     {%- assign default_paths = site.pages | map: "path" -%} {%- assign
     page_paths = site.header_pages | default: default_paths -%}
@@ -10,7 +10,7 @@
         {%- for path in page_paths -%} {%- assign my_page = site.pages | where:
         "path", path | first -%} {%- if my_page.title -%}
         <a
-          class="page-link px-2 text-base text-gray-500"
+          class="page-link pr-2 text-xs text-gray-500"
           href="{{ my_page.url | relative_url }}"
           >{{ my_page.title | escape }}</a
         >
