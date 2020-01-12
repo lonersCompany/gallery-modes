@@ -30,8 +30,6 @@ github_username: jekyll
 
 # Build settings
 theme: minima
-plugins:
-  - jekyll-feed
 
 # collections:
 #   projects:
@@ -57,3 +55,4 @@ exclude:
   - "package*.json"
   - "assets"
   - "node_modules"
+  - "yarn.lock"
